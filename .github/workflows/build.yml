@@ -43,6 +43,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: dist  # 上传 dist 目录作为工件
+          name: github-pages
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+            artifact: github-pages  # 部署 dist 目录
