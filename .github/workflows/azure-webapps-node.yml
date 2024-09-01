@@ -77,6 +77,10 @@ jobs:
           find . -type l -exec ls -l {} \; || echo "No symlinks found."
           ls 
           cd github-pages
+          echo "Finding hard links and symlinks..."
+          find . -type f -links +1 -exec ls -li {} \; || echo "No hard links found."
+          find . -type l -exec ls -l {} \; || echo "No symlinks found."
+       
           
       - name: Deploy to GitHub Pages
         id: deployment
