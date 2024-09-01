@@ -4,9 +4,7 @@ name: Build Dev
 
 on:
   push:
-    branches:
-      - dev
-      - master
+  workflow_dispatch:
 
 jobs:
   release:
