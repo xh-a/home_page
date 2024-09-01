@@ -40,7 +40,7 @@ jobs:
         run: ls -la dist  # 确保 dist 目录存在并包含文件
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v1
         with:
           path: dist  # 上传 dist 目录作为工件
           name: github-pages
