@@ -36,17 +36,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
-
     - name: npm install, build, and test
       run: |
         npm install -g pnpm
         pnpm install
-        pnpm build --if-present
+        pnpm build
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
