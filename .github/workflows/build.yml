@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: npm install
@@ -40,12 +40,12 @@ jobs:
         run: ls -la dist  # 确保 dist 目录存在并包含文件
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           path: dist  # 上传 dist 目录作为工件
           name: github-pages
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
         with:
           artifact: github-pages  # 部署 dist 目录
