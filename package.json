@@ -8,8 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "npm run clean && vite build && npm run clean",
-    "clean": "find . -type l -exec rm {} \\;",
+    "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write src/",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix"

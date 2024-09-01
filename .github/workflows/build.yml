@@ -36,6 +36,16 @@ jobs:
       - name: Build the project
         run: npm run build  # 运行构建命令，这个命令应生成 dist 目录
 
+      - name: List all symlinks
+        run: |
+          echo "Listing all symbolic links:"
+          find . -type l  # 列出所有符号链接
+
+      - name: Clean up symlinks
+        run: |
+          echo "Removing symbolic links:"
+          find . -type l -exec rm {} \;  # 删除符号链接
+
       - name: List build directory contents
         run: ls -la dist  # 确保 dist 目录存在并包含文件
 
