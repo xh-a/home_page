@@ -61,7 +61,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
+    
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
@@ -69,7 +69,13 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: github-pages
-    
+          
+      - name: Find hard links and symlinks
+        run: |
+          echo "Finding hard links and symlinks..."
+          find . -type f -links +1 -exec ls -li {} \; || echo "No hard links found."
+          find . -type l -exec ls -l {} \; || echo "No symlinks found."
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1 # or specific "vX.X.X" version
