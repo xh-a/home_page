@@ -47,10 +47,3 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
-        with:
-          artifact: github-pages  # 部署 dist 目录
-          target_branch: gh-pages  # 部署到 gh-pages 分支
-          token: ${{ secrets.GITHUB_TOKEN }}  # GitHub Token，用于推送到仓库
-          publish_dir: ./dist  # 部署的目录
-          force_orphan: true  # 强制推送到 gh-pages 分支
-          clean: true  # 清理 gh-pages 分支
