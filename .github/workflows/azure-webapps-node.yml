@@ -73,9 +73,9 @@ jobs:
       - name: Deploy to another branch
         run: |
           cd github-pages
+          git init
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-          git init
           git remote add origin https://github.com/xh-a/home_page.git  # 这里替换为你的仓库地址
           git checkout -b pages  # 这里替换为你的目标分支
           git add .
