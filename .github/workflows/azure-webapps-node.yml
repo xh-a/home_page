@@ -73,6 +73,7 @@ jobs:
       - name: Deploy to another branch
         run: |
           cd github-pages
+          ls -a
           git init
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
