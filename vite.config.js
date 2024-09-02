@@ -13,7 +13,7 @@ export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
   return defineConfig({
-    base: "/home_page/",
+    base: "/home/",
     plugins: [
       vue(),
       AutoImport({
