@@ -19,6 +19,10 @@
 
 <script setup>
 import socialLinks from "@/assets/socialLinks.json";
+// 将socialLinks中每个item的icon属性的值前加上import.meta.env.BASE_URL
+socialLinks.forEach((item) => {
+  item.icon = `${import.meta.env.BASE_URL}${item.icon}`;
+});
 
 // 社交链接提示
 const socialTip = ref("通过这里联系我吧");

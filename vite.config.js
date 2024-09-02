@@ -9,8 +9,11 @@ import Components from "unplugin-vue-components/vite";
 import viteCompression from "vite-plugin-compression";
 
 // https://vitejs.dev/config/
-export default ({ mode }) =>
-  defineConfig({
+export default ({ mode }) => {
+  const env = loadEnv(mode, process.cwd());
+
+  return defineConfig({
+    base: "/home_page/",
     plugins: [
       vue(),
       AutoImport({
@@ -43,9 +46,9 @@ export default ({ mode }) =>
           ],
         },
         manifest: {
-          name: loadEnv(mode, process.cwd()).VITE_SITE_NAME,
-          short_name: loadEnv(mode, process.cwd()).VITE_SITE_NAME,
-          description: loadEnv(mode, process.cwd()).VITE_SITE_DES,
+          name: env.VITE_SITE_NAME,
+          short_name: env.VITE_SITE_NAME,
+          description: env.VITE_SITE_DES,
           display: "standalone",
           start_url: "/",
           theme_color: "#424242",
@@ -120,3 +123,4 @@ export default ({ mode }) =>
       },
     },
   });
+};

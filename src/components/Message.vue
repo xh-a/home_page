@@ -37,7 +37,8 @@ import { mainStore } from "@/store";
 const store = mainStore();
 
 // 主页站点logo
-const siteLogo = import.meta.env.VITE_SITE_MAIN_LOGO;
+const siteLogo = `${import.meta.env.BASE_URL}${import.meta.env.VITE_SITE_MAIN_LOGO}`;
+
 // 站点链接
 const siteUrl = computed(() => {
   const url = import.meta.env.VITE_SITE_URL;

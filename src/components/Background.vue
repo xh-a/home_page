@@ -39,7 +39,8 @@ const bgRandom = Math.floor(Math.random() * 10 + 1);
 // 更换壁纸链接
 const changeBg = (type) => {
   if (type == 0) {
-    bgUrl.value = `/images/background${bgRandom}.jpg`;
+    bgUrl.value = `${import.meta.env.BASE_URL}images/background${bgRandom}.jpg`;
+    console.log("更换壁纸：", bgUrl.value)
   } else if (type == 1) {
     bgUrl.value = "https://api.dujin.org/bing/1920.php";
   } else if (type == 2) {
@@ -76,7 +77,7 @@ const imgLoadError = () => {
       fill: "#efefef",
     }),
   });
-  bgUrl.value = `/images/background${bgRandom}.jpg`;
+  bgUrl.value = `${import.meta.env.BASE_URL}images/background${bgRandom}.jpg`;
 };
 
 // 监听壁纸切换
