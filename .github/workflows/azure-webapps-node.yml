@@ -61,7 +61,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
@@ -69,19 +69,17 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: github-pages
-          
-      - name: Find hard links and symlinks
+
+      - name: Deploy to another branch
         run: |
-          echo "Finding hard links and symlinks..."
-          find . -type f -links +1 -exec ls -li {} \; || echo "No hard links found."
-          find . -type l -exec ls -l {} \; || echo "No symlinks found."
-          ls 
           cd github-pages
-          echo "Finding hard links and symlinks..."
-          find . -type f -links +1 -exec ls -li {} \; || echo "No hard links found."
-          find . -type l -exec ls -l {} \; || echo "No symlinks found."
-       
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1 # or specific "vX.X.X" version
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git init
+          git remote add origin https://github.com/xh-a/home_page.git  # 这里替换为你的仓库地址
+          git checkout -b pages  # 这里替换为你的目标分支
+          git add .
+          git commit -m "Deploy artifacts to pages branch
+          git push origin pages --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
